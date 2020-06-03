@@ -1,0 +1,22 @@
+on:
+  push:
+    branches:
+      - master
+      - develop
+    tags:
+      - v*
+  pull_request:
+    branches:
+      - master
+      - develop
+
+jobs:
+  build:
+    name: 'build'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+      - name: 'Echo test'
+        run: |
+          echo "Run tests"
