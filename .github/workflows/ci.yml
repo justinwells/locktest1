@@ -7,21 +7,22 @@ jobs:
   build:
     name: 'build'
     runs-on: ubuntu-latest
+
+    env:
+      AMS_POSTGRES_IP: "192.168.0.1"
+      AMS_POSTGRES_URL: 
+      VPC_CONN_PATH: 
+
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
-      - name: 'Echo test'
+      - name: get ip
         run: |
-          echo "Run tests"
-      - name: install snap
-        env:
-          AMS_POSTGRES_IP: "192.168.0.1"
-          AMS_POSTGRES_URL: 
-          VPC_CONN_PATH: 
-        run: |
-          sudo snap install yq
           echo "VPC_CONN_PATH="projects/${GCLOUD_PROJECT}/locations/europe-west2/connectors/private-vpc-connector"" >> $GITHUB_ENV
           echo "AMS_POSTGRES_URL="postgresql://user:${{ secrets.AMS_POSTGRES_PASSWORD }}@${POSTGRES_IP}:5432/ams"" >> $GITHUB_ENV
+      - name: install snap
+        run: |
+          sudo snap install yq
           yq e -i '.env_variables.DATABASE_URL = "${{env.AMS_POSTGRES_URL}}"' app.yaml
           yq e -i '.vpc_access_connector.name = "${VPC_CONN_PATH}"' app.yaml
           yq e -i '.env_variables.ELASTICSEARCH_URL = "${{ secrets.EXT_ELASTIC_CONN }}"' app.yaml
