@@ -20,9 +20,8 @@ jobs:
       - name: 'Echo test'
         run: |
           echo "Run tests"
-      - name: yq
-        uses: mikefarah/yq@v4.6.1
-        with:
-          file: /app.yaml
-          cmd: |
-            yq e '.vpc_access_connector.name' app.yaml
+      - uses: chrisdickinson/setup-yq@latest
+      - name: Show folks how to run YQ:
+        run: |
+        yq --help
+        yq e '.vpc_access_connector.name' app.yaml
