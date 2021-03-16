@@ -20,7 +20,8 @@ jobs:
       - name: 'Echo test'
         run: |
           echo "Run tests"
-      - uses: chrisdickinson/setup-yq@latest
+      - name: blah
+        uses: chrisdickinson/setup-yq@latest
       - name: Show folks how to run YQ:
         run: |
         yq --help
