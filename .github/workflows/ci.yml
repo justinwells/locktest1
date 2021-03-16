@@ -23,5 +23,5 @@ jobs:
       - name: blah
         uses: chrisdickinson/setup-yq@latest
         run: |
-        yq --help
-        yq e '.vpc_access_connector.name' app.yaml
+          yq --help
+          yq e '.vpc_access_connector.name' app.yaml
