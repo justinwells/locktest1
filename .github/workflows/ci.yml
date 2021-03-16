@@ -16,7 +16,7 @@ jobs:
       - name: install snap
         env:
           AMS_POSTGRES_IP: "192.168.0.1"
-          AMS_POSTGRES_URL: "postgresql://user:${{ secrets.AMS_POSTGRES_PASSWORD }}@${POSTGRES_IP}:5432/ams"
+          AMS_POSTGRES_URL: 
           VPC_CONN_PATH: 'abc'
         run: |
           sudo snap install yq
