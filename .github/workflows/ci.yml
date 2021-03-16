@@ -13,7 +13,7 @@ jobs:
       - name: 'Echo test'
         run: |
           echo "Run tests"
-     - name: install snap
+      - name: install snap
         run: |
           sudo snap install yq
           yq -help
