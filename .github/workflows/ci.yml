@@ -22,5 +22,6 @@ jobs:
           echo "Run tests"
       - name: yq
         uses: mikefarah/yq@v4.6.1
-      - name: use yq
-        run: yq e '.vpc_access_connector.name' app.yaml
+        with:
+          command: |
+            yq e '.vpc_access_connector.name' app.yaml
