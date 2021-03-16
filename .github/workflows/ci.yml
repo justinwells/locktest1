@@ -23,5 +23,6 @@ jobs:
       - name: yq
         uses: mikefarah/yq@v4.6.1
         with:
+          file: /app.yaml
           cmd: |
             yq e '.vpc_access_connector.name' app.yaml
