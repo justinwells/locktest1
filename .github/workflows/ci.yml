@@ -17,7 +17,7 @@ jobs:
         env:
           AMS_POSTGRES_IP: "192.168.0.1"
           AMS_POSTGRES_URL: "postgresql://user:${{ secrets.AMS_POSTGRES_PASSWORD }}@${POSTGRES_IP}:5432/ams"
-          VPC_CONN_PATH:
+          VPC_CONN_PATH: 'abc'
         run: |
           sudo snap install yq
           echo "VPC_CONN_PATH="projects/${GCLOUD_PROJECT}/locations/europe-west2/connectors/private-vpc-connector"" >> $GITHUB_ENV
