@@ -15,7 +15,6 @@ jobs:
           echo "Run tests"
       - name: install snap
         run: |
-          ls
           sudo snap install yq
           yq -help
           yq e '.vpc_access_connector.name' app.yaml
