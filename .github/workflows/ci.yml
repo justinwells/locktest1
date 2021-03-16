@@ -22,7 +22,7 @@ jobs:
           sudo snap install yq
           echo "VPC_CONN_PATH="projects/${GCLOUD_PROJECT}/locations/europe-west2/connectors/private-vpc-connector"" >> $GITHUB_ENV
           echo "AMS_POSTGRES_URL="postgresql://user:${{ secrets.AMS_POSTGRES_PASSWORD }}@${POSTGRES_IP}:5432/ams"" >> $GITHUB_ENV
-          yq e -i '.env_variables.DATABASE_URL = "${{AMS_POSTGRES_URL}}"' app.yaml
+          yq e -i '.env_variables.DATABASE_URL = "${{env.AMS_POSTGRES_URL}}"' app.yaml
           yq e -i '.vpc_access_connector.name = "${VPC_CONN_PATH}"' app.yaml
           yq e -i '.env_variables.ELASTICSEARCH_URL = "${{ secrets.EXT_ELASTIC_CONN }}"' app.yaml
           yq e app.yaml
