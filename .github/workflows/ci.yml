@@ -19,7 +19,7 @@ jobs:
       - name: get ip
         run: |
           echo "VPC_CONN_PATH="projects/${GCLOUD_PROJECT}/locations/europe-west2/connectors/private-vpc-connector"" >> $GITHUB_ENV
-          echo "AMS_POSTGRES_URL="postgresql://user:${{ secrets.AMS_POSTGRES_PASSWORD }}@${env.POSTGRES_IP}:5432/ams"" >> $GITHUB_ENV
+          echo "AMS_POSTGRES_URL="postgresql://user:${{ secrets.AMS_POSTGRES_PASSWORD }}@${{env.POSTGRES_IP}}:5432/ams"" >> $GITHUB_ENV
       - name: install snap
         run: |
           sudo snap install yq
