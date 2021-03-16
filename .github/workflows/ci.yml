@@ -13,11 +13,11 @@ jobs:
       - name: 'Echo test'
         run: |
           echo "Run tests"
-      - name: install snap
-        run: |
-          sudo snap install yq
-          yq -help
-          yq e '.vpc_access_connector.name' app.yaml
+#      - name: install snap
+#        run: |
+#          sudo snap install yq
+#          yq -help
+#          yq e '.vpc_access_connector.name' app.yaml
       
       - name: yq
         uses: mikefarah/yq@v4.6.1
