@@ -22,7 +22,6 @@ jobs:
           echo "Run tests"
       - name: blah
         uses: chrisdickinson/setup-yq@latest
-      - name: Show folks how to run YQ:
         run: |
         yq --help
         yq e '.vpc_access_connector.name' app.yaml
