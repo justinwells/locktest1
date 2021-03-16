@@ -1,14 +1,10 @@
 on:
   push:
     branches:
-      - master
-      - develop
-    tags:
-      - v*
-  pull_request:
-    branches:
-      - master
-      - develop
+      - '*'
+defaults:
+  run:
+    working-directory: /
 
 jobs:
   build:
@@ -20,9 +16,25 @@ jobs:
       - name: 'Echo test'
         run: |
           echo "Run tests"
-      - name: blah
-        uses: chrisdickinson/setup-yq@latest
-      - name: blah2
-        run: |
-          yq --help
-          yq e '.vpc_access_connector.name' app.yaml
+      - name: install snap
+        run:
+          snap install yq
+      
+      - name: yq
+        uses: mikefarah/yq@v4.6.1
+        with:
+          cmd: |
+            yq e '.vpc_access_connector.name' app.yaml
+
+
+
+
+
+
+
+#      - name: blah
+#        uses: chrisdickinson/setup-yq@latest
+#      - name: blah2
+#        run: |
+#          yq --help
+#          yq e '.vpc_access_connector.name' app.yaml
