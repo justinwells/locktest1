@@ -16,7 +16,7 @@ jobs:
       - name: install snap
         env:
           AMS_POSTGRES_IP: "192.168.0.1"
-          AMS_POSTGRES_URL: 
+          AMS_POSTGRES_URL: 'bbb'
           VPC_CONN_PATH: 'abc'
         run: |
           sudo snap install yq
